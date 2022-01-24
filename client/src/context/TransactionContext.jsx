@@ -16,7 +16,7 @@ const geEthereumContract = () => {
 };
 
 export const TransactionProvider = ({ children }) => {
-    const [currentdAccount, setCurrentAccount] = useState('');
+    const [currentAccount, setCurrentAccount] = useState('');
     const [formData, setFormData] = useState({ addressTo: '', amount: '', keyword: '', message: ''});
     const [isLoading, setIsLoading] = useState(false);
     const [transactionCount, setTransactionCount] = useState(localStorage.getItem('transactionCount'));
@@ -65,7 +65,7 @@ export const TransactionProvider = ({ children }) => {
 
             // get the data from the form...
             const { addressTo, amount, keyword, message } = formData;
-            const transactionContract = geEthereumContract();
+            const transactionContract = getEthereumContract();
             const parseAmount = ethers.utils.parseEther(amount)
             // send ethereum
             await ethereum.request({ 
@@ -101,7 +101,7 @@ export const TransactionProvider = ({ children }) => {
     }, []);
 
     return (
-        <TransactionContext.Provider value={{ connectWallet, currentdAccount, formData, setFormData, handleChange, sendTransaction }}>
+        <TransactionContext.Provider value={{ connectWallet, currentAccount, formData, setFormData, handleChange, sendTransaction }}>
             {children}
         </TransactionContext.Provider>
     );
