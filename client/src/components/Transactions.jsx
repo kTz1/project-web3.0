@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 
 import { TransactionContext } from '../context/TransactionContext';
 
-import dummyData from '../utils/dummyData';
 import { shortenAddress } from '../utils/shortenAddress';
 import useFetch from '../hooks/useFetch';
 
@@ -16,8 +15,8 @@ const TransactionCard = ({ addressTo, addressFrom, timestamp, message, keyword, 
             2xl:max-w-[500px]
             sm:min-w-[270px]
             sm:max-w-[300px]
-            flex-col p-3 rounded-md hover:shadow-2xl
-        ">
+            flex-col p-3 rounded-md hover:shadow-2xl"
+        >
             <div className="flex flex-col items-center w-full mt-3">
                 <div className="w-full mb-6 p-2">
                     <a 
@@ -41,7 +40,6 @@ const TransactionCard = ({ addressTo, addressFrom, timestamp, message, keyword, 
                             <p className="text-white text-base">Message: {message}</p>
                         </>
                     )}
-
                 </div>
                 <img 
                     src={gifUrl || url}
@@ -54,11 +52,11 @@ const TransactionCard = ({ addressTo, addressFrom, timestamp, message, keyword, 
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 const Transactions = () => {
-    const { currentAccount } = useContext(TransactionContext);
+    const { currentAccount, transactions } = useContext(TransactionContext);
 
     return (
         <div className="flex w-full justify-center items-center 2xl:px-20 gradient-bg-transactions">
@@ -70,7 +68,7 @@ const Transactions = () => {
                 )}
 
                 <div className="flex flex-wrap justify-center items-center mt-10">
-                    {dummyData.reverse().map((transaction, i) => (
+                    {transactions.reverse().map((transaction, i) => (
                         <TransactionCard key={i} {...transaction} />
                     ))}
                 </div>

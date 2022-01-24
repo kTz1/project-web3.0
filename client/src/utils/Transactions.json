@@ -97,7 +97,7 @@
               },
               {
                 "internalType": "string",
-                "name": "messge",
+                "name": "message",
                 "type": "string"
               },
               {

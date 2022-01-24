@@ -10,7 +10,7 @@ contract Transactions {
         address sender;
         address receiver;
         uint amount;
-        string messge;
+        string message;
         uint256 timestamp;
         string keyword;
     }
